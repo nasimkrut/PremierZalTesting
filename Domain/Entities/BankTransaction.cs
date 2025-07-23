@@ -8,7 +8,7 @@ public class BankTransaction
     public DateTime Timestamp { get; set; }
     public string UserEmail { get; set; }
 
-    public bool IsProcessed { get; set; } = false;
+    public bool IsProcessed { get; set; }
 
     public Guid? UserId { get; set; }
     public User? User { get; set; }

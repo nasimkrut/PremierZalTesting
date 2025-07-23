@@ -85,6 +85,5 @@ public class BankApiClient : IBankApiClient
         Array.Copy(hashBytes, guidBytes, 16);
 
         return new Guid(guidBytes);
-
     }
 }

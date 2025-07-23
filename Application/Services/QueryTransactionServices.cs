@@ -1,19 +1,16 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
 using Infrastructure;
-using Infrastructure.BankApiClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services;
 
 public class QueryTransactionServices : IQueryTransactionServices
 {
-    private readonly IBankApiClient _bankApiClient;
     private readonly ApplicationDbContext _dbContext;
 
-    public QueryTransactionServices(IBankApiClient bankApiClient, ApplicationDbContext dbContext)
+    public QueryTransactionServices(ApplicationDbContext dbContext)
     {
-        _bankApiClient = bankApiClient;
         _dbContext = dbContext;
     }
     

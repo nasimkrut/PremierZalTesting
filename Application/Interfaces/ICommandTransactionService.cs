@@ -1,7 +1,6 @@
 ﻿namespace Application.Interfaces;
 
-public interface ITransactionCommandService
+public interface ICommandTransactionService
 {
     Task MarkTransactionAsProcessedAsync(Guid transactionId);
-
 }

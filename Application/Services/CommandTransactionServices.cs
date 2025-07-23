@@ -1,17 +1,14 @@
 ﻿using Application.Interfaces;
 using Infrastructure;
-using Infrastructure.BankApiClient;
 
 namespace Application.Services;
 
-public class TransactionCommandServices : ITransactionCommandService
+public class CommandTransactionServices : ICommandTransactionService
 {
-    private readonly IBankApiClient _bankApiClient;
     private readonly ApplicationDbContext _dbContext;
 
-    public TransactionCommandServices(IBankApiClient bankApiClient, ApplicationDbContext dbContext)
+    public CommandTransactionServices(ApplicationDbContext dbContext)
     {
-        _bankApiClient = bankApiClient;
         _dbContext = dbContext;
     }
     

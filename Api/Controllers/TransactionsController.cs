@@ -6,7 +6,7 @@ namespace Api.Controllers;
 [Route("api/transactions")]
 public class TransactionsController(
     IImportTransactionsServices importServices,
-    ITransactionCommandService commandService
+    ICommandTransactionService service
     ) : ControllerBase
 {
     [HttpPost("import")]
@@ -17,9 +17,9 @@ public class TransactionsController(
     }
     
     [HttpPost("{id}/process")]
-    public async Task<NoContentResult> MarkTransactionAsProcessed(Guid id)
+    public async Task<ActionResult> MarkTransactionAsProcessed(Guid id)
     {
-        await commandService.MarkTransactionAsProcessedAsync(id);
-        return NoContent();
+        await service.MarkTransactionAsProcessedAsync(id);
+        return Ok("Помечено");
     }
 }

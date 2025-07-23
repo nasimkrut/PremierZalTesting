@@ -14,7 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IBankApiClient, BankApiClient>();
 builder.Services.AddScoped<IImportTransactionsServices, ImportTransactionServices>();
 builder.Services.AddScoped<IQueryTransactionServices, QueryTransactionServices>();
-builder.Services.AddScoped<ITransactionCommandService, TransactionCommandServices>();
+builder.Services.AddScoped<ICommandTransactionService, CommandTransactionServices>();
 
 
 builder.Services.AddEndpointsApiExplorer();
