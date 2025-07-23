@@ -15,3 +15,4 @@ C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Infrastructure
 C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
 C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
