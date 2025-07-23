@@ -28,6 +28,8 @@ Infrastructure       // EF Core, база, BankApiClient
   * `POST /api/transactions/"{id}/process"`
   * `GET /api/reports/monthly"`
 
+* Раздробил сервисы и контроллеры для удобного расширения и читаемости 
+
 ---
 
 ## Как запустить
@@ -79,4 +81,4 @@ dotnet run
 * Логирование
 * Docker/Docker Compose
 * CI/CD (GitHub Actions)
-* 
+
