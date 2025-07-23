@@ -15,3 +15,4 @@ C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Application\ob
 C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Application\obj\Debug\net8.0\refint\Application.dll
 C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Application\obj\Debug\net8.0\Application.pdb
 C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Application\obj\Debug\net8.0\ref\Application.dll
+C:\Users\Nasim\OneDrive\Рабочий стол\PremierZalTesting\Application\obj\Debug\net8.0\Application.sourcelink.json
