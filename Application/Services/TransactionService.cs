@@ -20,6 +20,7 @@ public class TransactionService : ITransactionService
         _dbContext = dbContext;
     }
 
+    #region Import
     public async Task ImportTransactionsAsync()
     {
         var bankTransactions = await _bankApiClient.GetRecentTransactionsAsync();
@@ -55,11 +56,10 @@ public class TransactionService : ITransactionService
 
         await _dbContext.SaveChangesAsync();
     }
+    
+    #endregion
 
-    public Task GetUnProcessedTransactionsAsync()
-    {
-        throw new NotImplementedException();
-    }
+    #region QueryServices
 
     public async Task<List<BankTransactionDto>> GetUnprocessedTransactionsAsync()
     {
@@ -76,6 +76,26 @@ public class TransactionService : ITransactionService
             .ToListAsync();
     }
 
+    public async Task<List<UserTransactionSummaryDto>> GetMonthlyProcessedTransactionSummaryAsync()
+    {
+        var oneMonth = DateTime.UtcNow.AddMonths(-1);
+
+        return await _dbContext.Transactions
+            .Where(t => t.IsProcessed && t.Timestamp >= oneMonth)
+            .GroupBy(t => t.UserEmail)
+            .Select(g => new UserTransactionSummaryDto
+            {
+                UserEmail = g.Key,
+                TotalAmount = g.Sum(t => t.Amount)
+            })
+            .ToListAsync();
+        
+    }
+    
+    #endregion
+
+    #region Post
+
     public async Task MarkTransactionAsProcessedAsync(Guid transactionId)
     {
         var transaction = _dbContext.Transactions.FirstOrDefault(t => t.Id == transactionId);
@@ -87,4 +107,11 @@ public class TransactionService : ITransactionService
         transaction.IsProcessed = true;
         await _dbContext.SaveChangesAsync();
     }
+
+    
+
+    #endregion
+    
+
+
 }

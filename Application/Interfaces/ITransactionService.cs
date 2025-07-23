@@ -8,4 +8,6 @@ public interface ITransactionService
     Task ImportTransactionsAsync();
     Task<List<BankTransactionDto>> GetUnprocessedTransactionsAsync();
     Task MarkTransactionAsProcessedAsync(Guid transactionId);
+    Task<List<UserTransactionSummaryDto>> GetMonthlyProcessedTransactionSummaryAsync();
+    
 }

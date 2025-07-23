@@ -29,4 +29,11 @@ public class TransactionsController(
         await service.MarkTransactionAsProcessedAsync(id);
         return NoContent();
     }
+
+    [HttpGet("reports/monthly")]
+    public async Task<IActionResult> GetMonthlyReportByUser()
+    {
+        var report = await service.GetMonthlyProcessedTransactionSummaryAsync();
+        return Ok(report);
+    }
 }
