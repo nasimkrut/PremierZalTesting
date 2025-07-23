@@ -19,6 +19,10 @@ public class TransactionsController(
     [HttpPost("{id}/process")]
     public async Task<ActionResult> MarkTransactionAsProcessed(Guid id)
     {
+        var transaction = await service.GetTransactionByIdAsync(id);
+        if (transaction.IsProcessed)
+            return Conflict($"Транзакция {id} уже была обработана ранее");
+            
         await service.MarkTransactionAsProcessedAsync(id);
         return Ok("Помечено");
     }

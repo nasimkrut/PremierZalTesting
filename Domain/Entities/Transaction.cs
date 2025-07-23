@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities;
 
-public class BankTransaction
+public class Transaction
 {
     public Guid Id { get; set; }
     public decimal Amount { get; set; }

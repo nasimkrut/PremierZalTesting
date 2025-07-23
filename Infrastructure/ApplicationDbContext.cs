@@ -6,7 +6,7 @@ namespace Infrastructure
     public class ApplicationDbContext : DbContext
     {
         public DbSet<User> Users => Set<User>();
-        public DbSet<BankTransaction> Transactions => Set<BankTransaction>();
+        public DbSet<Transaction> Transactions => Set<Transaction>();
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

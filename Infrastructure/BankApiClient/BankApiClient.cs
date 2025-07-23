@@ -6,9 +6,9 @@ namespace Infrastructure.BankApiClient;
 
 public class BankApiClient : IBankApiClient
 {
-    public Task<List<BankTransaction>> GetRecentTransactionsAsync()
+    public Task<List<Transaction>> GetRecentTransactionsAsync()
     {
-        return Task.FromResult(new List<BankTransaction>
+        return Task.FromResult(new List<Transaction>
         {
             new()
             {

@@ -34,7 +34,7 @@ public class ImportTransactionServices : IImportTransactionsServices
                 await _dbContext.SaveChangesAsync();
             }
 
-            var newTransaction = new BankTransaction
+            var newTransaction = new Transaction
             {
                 Id = transaction.Id,
                 Amount = transaction.Amount,
