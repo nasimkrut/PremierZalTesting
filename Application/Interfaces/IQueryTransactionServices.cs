@@ -1,13 +1,9 @@
-﻿using System.Threading.Tasks;
-using Application.DTOs;
+﻿using Application.DTOs;
 
 namespace Application.Interfaces;
 
-public interface ITransactionService
+public interface IQueryTransactionServices
 {
-    Task ImportTransactionsAsync();
     Task<List<BankTransactionDto>> GetUnprocessedTransactionsAsync();
-    Task MarkTransactionAsProcessedAsync(Guid transactionId);
     Task<List<UserTransactionSummaryDto>> GetMonthlyProcessedTransactionSummaryAsync();
-    
 }
