@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "ZRWw5mZj6SI9BBXtN6t0brzx9fnnAEk29uj9hwaUARk=",
-  "Source": "PremierBankTesting",
-  "BasePath": "_content/PremierBankTesting",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"KvHOo5kMW9jTGuGBrmhGdXuYzweoU5ZoThezt6L9uIQ=","Source":"Api","BasePath":"_content/Api","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
