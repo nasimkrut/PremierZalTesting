@@ -12,8 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
     
 builder.Services.AddScoped<IBankApiClient, BankApiClient>();
-builder.Services.AddScoped<ITransactionImportService, TransactionImportService>();
-builder.Services.AddScoped<ITransactionQueryService, TransactionQueryService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 
 
 builder.Services.AddEndpointsApiExplorer();

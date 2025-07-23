@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Application.Services;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers;
@@ -6,20 +7,26 @@ namespace Api.Controllers;
 [ApiController]
 [Route("api/transactions")]
 public class TransactionsController(
-    ITransactionImportService importService,
-    ITransactionQueryService queryService
+    ITransactionService service
     ) : ControllerBase
 {
     [HttpPost("import")]
     public async Task<ActionResult> ImportTransaction()
     {
-        await importService.ImportTransactionsAsync();
+        await service.ImportTransactionsAsync();
         return Ok("Принимайте транзакции друзья");
     }
     [HttpGet("unprocessed")]
     public async Task<IActionResult> GetUnprocessedTransactions()
     {
-        var result = await queryService.GetUnprocessedTransactionsAsync();
+        var result = await service.GetUnprocessedTransactionsAsync();
         return Ok(result);
+    }
+    
+    [HttpPost("{id}/process")]
+    public async Task<NoContentResult> MarkTransactionAsProcessed(Guid id)
+    {
+        await service.MarkTransactionAsProcessedAsync(id);
+        return NoContent();
     }
 }

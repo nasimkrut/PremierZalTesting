@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Application.DTOs;
 using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure;
@@ -8,12 +9,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services;
 
-public class TransactionImportService : ITransactionImportService
+public class TransactionService : ITransactionService
 {
     private readonly IBankApiClient _bankApiClient;
     private readonly ApplicationDbContext _dbContext;
 
-    public TransactionImportService(IBankApiClient bankApiClient, ApplicationDbContext dbContext)
+    public TransactionService(IBankApiClient bankApiClient, ApplicationDbContext dbContext)
     {
         _bankApiClient = bankApiClient;
         _dbContext = dbContext;
@@ -58,5 +59,32 @@ public class TransactionImportService : ITransactionImportService
     public Task GetUnProcessedTransactionsAsync()
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<List<BankTransactionDto>> GetUnprocessedTransactionsAsync()
+    {
+        return await _dbContext.Transactions
+            .Where(t => !t.IsProcessed)
+            .Select(t => new BankTransactionDto
+            {
+                Id = t.Id,
+                Amount = t.Amount,
+                Comment = t.Comment,
+                Timestamp = t.Timestamp,
+                UserEmail = t.UserEmail
+            })
+            .ToListAsync();
+    }
+
+    public async Task MarkTransactionAsProcessedAsync(Guid transactionId)
+    {
+        var transaction = _dbContext.Transactions.FirstOrDefault(t => t.Id == transactionId);
+        if (transaction == null)
+        {
+            throw new Exception("Транзакции такой нет");
+        }
+
+        transaction.IsProcessed = true;
+        await _dbContext.SaveChangesAsync();
     }
 }
